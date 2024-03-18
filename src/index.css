@@ -1,0 +1,24 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+  font-family: "Poppins", sans-serif;
+  color: white;
+  box-sizing: border-box;
+}
+
+.transition_custom {
+  transition: all ease 0.5s;
+}
+
+.banner {
+  background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
+    url("/banner.jpg");
+  background-size: cover;
+  background-position: center center;
+}
+
+.left_clip_path {
+  clip-path: polygon(0 25%, 100% 0, 100% 100%, 0% 100%);
+}
