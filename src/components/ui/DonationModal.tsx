@@ -1,4 +1,5 @@
-import { NavLink } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+import { useCreateDonationsMutation } from "../../redux/feature/donationApi";
 import { TFetchData } from "../../utils/Type";
 import React from "react";
 
@@ -13,6 +14,16 @@ const DonationModal: React.FC<DonationModalProps> = ({
   data,
   onClose,
 }) => {
+  const [createDonation] = useCreateDonationsMutation();
+  const navigate = useNavigate();
+  const handleDonation = () => {
+    const donationData = {
+      data: data,
+      userEmail,
+    };
+    createDonation(donationData);
+    navigate("/dashboard");
+  };
   return (
     <div className="fixed top-0 left-0 w-screen h-screen z-50 bg-black/60 backdrop-blur-sm">
       <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-[420px] sm:max-w-[600px] lg:max-w-[984px] p-4 max-h-[90vh] overflow-auto">
@@ -49,8 +60,11 @@ const DonationModal: React.FC<DonationModalProps> = ({
               </div>
               <div className="w-full flex justify-center items-center gap-2">
                 <div className=" w-1/2">
-                  <div className="bg-red-500 border rounded-lg py-2 px-5 flex items-center justify-center gap-2 text-white font-semibold text-sm">
-                    <NavLink to="/dashboard">Confirm!</NavLink>
+                  <div
+                    onClick={() => handleDonation()}
+                    className="bg-red-500 border rounded-lg py-2 px-5 flex items-center justify-center gap-2 text-white font-semibold text-sm"
+                  >
+                    Confirm!
                   </div>
                 </div>
                 <div className="w-1/2">

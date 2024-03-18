@@ -13,7 +13,7 @@ const Navbar = () => {
       confirmButtonColor: "#3085d6",
       cancelButtonColor: "#d33",
       confirmButtonText: "Yes, Log Out!",
-    }).then((result) => {
+    }).then((result: any) => {
       if (result.isConfirmed) {
         dispatch(logOut());
         Swal.fire({
@@ -32,44 +32,51 @@ const Navbar = () => {
           <img src="/logo.jpg" alt="" className="w-10 h-10" />
         </div>
       </NavLink>
-      {authenticated && (
-        <div className=" flex gap-5 justify-center items-center">
-          <NavLink
-            to="/supplies"
-            className="text-white hover:text-[#d4d4d4] transition_custom text-xs md:text-lg lg:text-xl font-normal md:font-medium lg:font-medium "
-          >
-            All Supplies
-          </NavLink>
+
+      <div className=" flex flex-wrap gap-5 justify-center items-center">
+        <NavLink
+          to="/supplies"
+          className="text-white hover:text-[#d4d4d4] transition_custom text-xs md:text-lg lg:text-xl font-normal md:font-medium lg:font-medium "
+        >
+          All Supplies
+        </NavLink>
+        {authenticated && (
           <NavLink
             to="/dashboard"
             className="text-white hover:text-[#d4d4d4] transition_custom text-xs md:text-lg lg:text-xl font-normal md:font-medium lg:font-medium "
           >
             Dashboard
           </NavLink>
-          <button
-            onClick={() => handleLogout()}
-            className="text-white text-xs md:text-lg lg:text-xl font-normal md:font-medium lg:font-medium bg-[#1f1f1f] transition_custom  py-1.5 px-4 rounded hover:text-[#1f1f1f] hover:bg-white"
-          >
-            LogOut
-          </button>
-        </div>
-      )}
-      {!authenticated && (
-        <div className="flex gap-5 justify-center items-center">
-          <NavLink
-            to="/supplies"
-            className="text-white hover:text-[#d4d4d4] transition_custom text-xs md:text-lg lg:text-xl font-normal md:font-medium lg:font-medium "
-          >
-            All Supplies
-          </NavLink>
+        )}
+        <NavLink
+          to="/leaderboard"
+          className="text-white hover:text-[#d4d4d4] transition_custom text-xs md:text-lg lg:text-xl font-normal md:font-medium lg:font-medium "
+        >
+          Leaderboard
+        </NavLink>
+        <NavLink
+          to="/community"
+          className="text-white hover:text-[#d4d4d4] transition_custom text-xs md:text-lg lg:text-xl font-normal md:font-medium lg:font-medium "
+        >
+          Community
+        </NavLink>
+        {!authenticated && (
           <NavLink
             to="/login"
-            className="text-white text-xs md:text-lg lg:text-xl font-normal md:font-medium lg:font-medium bg-[#1f1f1f] transition_custom  py-1.5 px-4 rounded hover:text-[#1f1f1f] hover:bg-white"
+            className="text-[#a80000] bg-white hover:bg-[#a80000]  hover:text-white transition_custom text-xs md:text-lg lg:text-xl font-normal md:font-medium lg:font-medium py-1.5 px-4 rounded"
           >
             Login
           </NavLink>
-        </div>
-      )}
+        )}
+        {authenticated && (
+          <button
+            onClick={() => handleLogout()}
+            className="text-[#a80000] bg-white hover:bg-[#a80000]  hover:text-white transition_custom text-xs md:text-lg lg:text-xl font-normal md:font-medium lg:font-medium py-1.5 px-4 rounded"
+          >
+            LogOut
+          </button>
+        )}
+      </div>
     </div>
   );
 };

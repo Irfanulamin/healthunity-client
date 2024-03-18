@@ -1,7 +1,7 @@
-import Swal from "sweetalert2";
 import { useCreateSupplyMutation } from "../../redux/feature/suppliesApi";
 import { FieldValues, useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
+import Swal from "sweetalert2";
 
 const AddSupply = () => {
   const [createSupplyMutation] = useCreateSupplyMutation();

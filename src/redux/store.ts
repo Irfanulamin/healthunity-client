@@ -14,6 +14,8 @@ import {
   REGISTER,
 } from "redux-persist";
 import storage from "redux-persist/lib/storage";
+import { commentApi } from "./feature/commentApi";
+import { donationApi } from "./feature/donationApi";
 
 const persistConifg = {
   key: "auth",
@@ -27,6 +29,8 @@ const store = configureStore({
     [suppliesApi.reducerPath]: suppliesApi.reducer,
     [registerApi.reducerPath]: registerApi.reducer,
     [loginApi.reducerPath]: loginApi.reducer,
+    [commentApi.reducerPath]: commentApi.reducer,
+    [donationApi.reducerPath]: donationApi.reducer,
     auth: persistedAuthReducer,
   },
   middleware: (getDefaultMiddleware) =>
@@ -37,7 +41,9 @@ const store = configureStore({
     }).concat(
       suppliesApi.middleware,
       registerApi.middleware,
-      loginApi.middleware
+      loginApi.middleware,
+      commentApi.middleware,
+      donationApi.middleware
     ),
 });
 

@@ -9,6 +9,8 @@ import Dashboard from "../pages/private/Dashboard";
 import Login from "../pages/public/Login";
 import Register from "../pages/public/Register";
 import ProtectedLayer from "../components/ui/ProtectedLayer";
+import Leaderboard from "../pages/public/Leaderboard";
+import Community from "../pages/public/Community";
 
 export const router = createBrowserRouter([
   {
@@ -34,6 +36,14 @@ export const router = createBrowserRouter([
       {
         path: "register",
         element: <Register />,
+      },
+      {
+        path: "leaderboard",
+        element: <Leaderboard />,
+      },
+      {
+        path: "community",
+        element: <Community />,
       },
     ],
   },

@@ -33,7 +33,7 @@ const Supplies = () => {
       confirmButtonColor: "#3085d6",
       cancelButtonColor: "#d33",
       confirmButtonText: "Yes, delete it!",
-    }).then((result) => {
+    }).then((result: any) => {
       if (result.isConfirmed) {
         mutate(id);
         Swal.fire({

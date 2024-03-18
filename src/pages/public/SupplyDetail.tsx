@@ -12,6 +12,7 @@ const SupplyDetail = () => {
   const { data } = useGetSupplyByIdQuery(id);
   const [showModal, setShowModal] = useState(false);
   const userEmail = useAppSelector(userCurrentEmail);
+
   const handleShowModal = () => {
     setShowModal(true);
   };

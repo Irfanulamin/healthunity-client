@@ -24,7 +24,7 @@ const Accordion = () => {
         animate={controls}
         transition={{ duration: 0.5, delay: 0.5, ease: "easeInOut" }}
         ref={ref}
-        className="border-2 border-black pb-2 rounded-md"
+        className="border border-black pb-2 rounded-md"
       >
         <div>
           <h2 className=" text-3xl lg:text-5xl font-semibold  text-white bg-[#1f1f1f] py-4 rounded">

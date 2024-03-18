@@ -29,7 +29,8 @@
     "redux-persist": "^6.0.0",
     "slick-carousel": "^1.8.1",
     "sonner": "^1.4.3",
-    "sweetalert2": "^11.10.6"
+    "sweetalert2": "^11.10.6",
+    "sweetalert2-react-content": "^5.0.7"
   },
   "devDependencies": {
     "@types/node": "^20.11.24",
