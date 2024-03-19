@@ -11,6 +11,8 @@ import Register from "../pages/public/Register";
 import ProtectedLayer from "../components/ui/ProtectedLayer";
 import Leaderboard from "../pages/public/Leaderboard";
 import Community from "../pages/public/Community";
+import Volunteer from "../pages/public/Volunteer";
+import AboutUsPage from "../pages/public/AboutUsPage";
 
 export const router = createBrowserRouter([
   {
@@ -44,6 +46,14 @@ export const router = createBrowserRouter([
       {
         path: "community",
         element: <Community />,
+      },
+      {
+        path: "volunteer",
+        element: <Volunteer />,
+      },
+      {
+        path: "about-us",
+        element: <AboutUsPage />,
       },
     ],
   },

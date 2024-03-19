@@ -3,9 +3,11 @@ import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import { useAppSelector } from "../../redux/hook";
+import { useGetTestimonialsQuery } from "../../redux/feature/testimonialApi";
 
 const Testimonial = () => {
   const { darkMode } = useAppSelector((store) => store.theme);
+  const { data } = useGetTestimonialsQuery("");
   const settings = {
     speed: 1000,
     slidesToShow: 3,
@@ -61,188 +63,37 @@ const Testimonial = () => {
       </div>
 
       <Slider {...settings} className="">
-        <div className="bg-white p-2 rounded-md border border-black">
-          <div className=" bg-[#d4d4d4] px-6 py-12 rounded-md ">
-            <div>
-              <p className="text-left text-[#731010]">
-                "HealthUnity's commitment to supporting communities through
-                their impactful donations is truly a beacon of hope. Their
-                dedication to post-disaster healthcare reflects a genuine act of
-                kindness that makes a lasting difference."
-              </p>
-            </div>
-            <hr className="border-[#707070] py-3" />
-            <div className="flex justify-start items-center gap-2 ">
-              <img
-                src="/avatar.jpg"
-                alt=""
-                className="w-12 h-12 rounded-full"
-              />
-              <div>
-                <p className="text-[#a80000] text-left">Emily Carter</p>
-                <p className="text-[#a80000] text-left">
-                  Disaster Relief Coordinator
-                </p>
+        {data &&
+          data.slice(0, 6).map((testimonialData: any) => (
+            <div
+              key={testimonialData._id}
+              className="bg-white p-2 rounded-md border border-black"
+            >
+              <div className=" bg-[#d4d4d4] px-6 py-12 rounded-md ">
+                <div>
+                  <p className="text-left text-[#731010]">
+                    {testimonialData.comment}
+                  </p>
+                </div>
+                <hr className="border-[#707070] py-3" />
+                <div className="flex justify-start items-center gap-2 ">
+                  <img
+                    src="/avatar.jpg"
+                    alt=""
+                    className="w-12 h-12 rounded-full"
+                  />
+                  <div>
+                    <p className="text-[#a80000] text-left">
+                      {testimonialData.name}
+                    </p>
+                    <p className="text-[#a80000] text-left">
+                      {testimonialData.occupation}
+                    </p>
+                  </div>
+                </div>
               </div>
             </div>
-          </div>
-        </div>
-        <div className="bg-white p-2 rounded-md border border-black">
-          <div className="bg-[#d4d4d4] px-6 py-12 rounded-md">
-            <div>
-              <p className="text-left text-[#731010]">
-                "HealthUnity's dedication to uplifting communities through
-                impactful donations is a beacon of hope. Their unwavering
-                commitment to post-disaster healthcare embodies a genuine act of
-                kindness that creates a lasting impact."
-              </p>
-            </div>
-            <hr className="border-[#707070] py-3" />
-            <div className="flex justify-start items-center gap-2">
-              <img
-                src="/avatar.jpg"
-                alt=""
-                className="w-12 h-12 rounded-full"
-              />
-              <div>
-                <p className="text-[#a80000] text-left">Michael Rodriguez</p>
-                <p className="text-[#a80000] text-left">
-                  Public Health Advocate
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div className="bg-white p-2 rounded-md border border-black">
-          <div className="bg-[#d4d4d4] px-6 py-12 rounded-md">
-            <div>
-              <p className="text-left text-[#731010]">
-                "HealthUnity's impactful donations serve as a beacon of hope for
-                communities in need. Their dedication to post-disaster
-                healthcare reflects a genuine act of kindness, leaving a
-                meaningful and lasting difference."
-              </p>
-            </div>
-            <hr className="border-[#707070] py-3" />
-            <div className="flex justify-start items-center gap-2">
-              <img
-                src="/avatar.jpg"
-                alt=""
-                className="w-12 h-12 rounded-full"
-              />
-              <div>
-                <p className="text-[#a80000] text-left">Olivia Thompson</p>
-                <p className="text-[#a80000] text-left">
-                  Community Health Worker
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div className="bg-white p-2 rounded-md border border-black">
-          <div className="bg-[#d4d4d4] px-6 py-12 rounded-md">
-            <div>
-              <p className="text-left text-[#731010]">
-                "HealthUnity's compassionate approach to impactful donations is
-                a source of hope for communities. Their dedicated post-disaster
-                healthcare efforts reflect a genuine act of kindness, creating a
-                lasting positive change."
-              </p>
-            </div>
-            <hr className="border-[#707070] py-3" />
-            <div className="flex justify-start items-center gap-2">
-              <img
-                src="/avatar.jpg"
-                alt=""
-                className="w-12 h-12 rounded-full"
-              />
-              <div>
-                <p className="text-[#a80000] text-left">Daniel Martinez</p>
-                <p className="text-[#a80000] text-left">
-                  Healthcare Administrator
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div className="bg-white p-2 rounded-md border border-black">
-          <div className="bg-[#d4d4d4] px-6 py-12 rounded-md">
-            <div>
-              <p className="text-left text-[#731010]">
-                "HealthUnity's unwavering support to communities through
-                impactful donations is a true beacon of hope. Their commitment
-                to post-disaster healthcare reflects a genuine act of kindness
-                that resonates with lasting positive change."
-              </p>
-            </div>
-            <hr className="border-[#707070] py-3" />
-            <div className="flex justify-start items-center gap-2">
-              <img
-                src="/avatar.jpg"
-                alt=""
-                className="w-12 h-12 rounded-full"
-              />
-              <div>
-                <p className="text-[#a80000] text-left">Sophie Turner</p>
-                <p className="text-[#a80000] text-left">
-                  Emergency Response Coordinator
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div className="bg-white p-2 rounded-md border border-black">
-          <div className="bg-[#d4d4d4] px-6 py-12 rounded-md">
-            <div>
-              <p className="text-left text-[#731010]">
-                "HealthUnity's impactful donations bring hope to communities in
-                need. Their dedication to post-disaster healthcare reflects a
-                genuine act of kindness, leaving a meaningful and enduring
-                impact."
-              </p>
-            </div>
-            <hr className="border-[#707070] py-3" />
-            <div className="flex justify-start items-center gap-2">
-              <img
-                src="/avatar.jpg"
-                alt=""
-                className="w-12 h-12 rounded-full"
-              />
-              <div>
-                <p className="text-[#a80000] text-left">Nathan Reynolds</p>
-                <p className="text-[#a80000] text-left">
-                  Emergency Response Coordinator
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div className="bg-white p-2 rounded-md border border-black">
-          <div className="bg-[#d4d4d4] px-6 py-12 rounded-md">
-            <div>
-              <p className="text-left text-[#731010]">
-                "HealthUnity's commitment to impactful donations is a beacon of
-                hope for communities. Their dedication to post-disaster
-                healthcare reflects a genuine act of kindness, creating a
-                lasting and positive difference."
-              </p>
-            </div>
-            <hr className="border-[#707070] py-3" />
-            <div className="flex justify-start items-center gap-2">
-              <img
-                src="/avatar.jpg"
-                alt=""
-                className="w-12 h-12 rounded-full"
-              />
-              <div>
-                <p className="text-[#a80000] text-left">Isabella Adams</p>
-                <p className="text-[#a80000] text-left">
-                  Community Health Advocate
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
+          ))}
       </Slider>
     </div>
   );

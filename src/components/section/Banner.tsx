@@ -46,9 +46,11 @@ const Banner = () => {
                 Donate Now
               </button>
             </NavLink>
-            <button className="rounded-sm btn-outline border-white hover:border-[#731010] hover:text-[#731010] text-white hover:bg-white px-3 py-1 transition_custom">
-              About Us
-            </button>
+            <NavLink to="/about-us">
+              <button className="rounded-sm btn-outline border-white hover:border-[#731010] hover:text-[#731010] text-white hover:bg-white px-3 py-1 transition_custom">
+                About Us
+              </button>
+            </NavLink>
           </div>
         </div>
       </section>

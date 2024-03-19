@@ -30,7 +30,7 @@ const Navbar = () => {
     dispatch(toggleTheme());
   };
   return (
-    <div className="bg-[#a80000] gap-2 flex flex-col md:flex-row lg:flex-row justify-between items-center px-2 md:px-24 lg:px-36 py-2 md:py-4 lg:py-5">
+    <div className="bg-[#a80000] gap-4 flex flex-col lg:flex-row justify-between items-center px-2 md:px-24 lg:px-36 py-2 md:py-4 lg:py-5">
       <NavLink to="/">
         <div className="flex justify-center items-center">
           <h1 className="text-2xl lg:text-4xl font-extrabold">HealthUnity</h1>
@@ -64,6 +64,18 @@ const Navbar = () => {
           className="text-white hover:text-[#d4d4d4] transition_custom text-xs md:text-lg lg:text-xl font-normal md:font-medium lg:font-medium "
         >
           Community
+        </NavLink>
+        <NavLink
+          to="/about-us"
+          className="text-white hover:text-[#d4d4d4] transition_custom text-xs md:text-lg lg:text-xl font-normal md:font-medium lg:font-medium "
+        >
+          Our Volunteers
+        </NavLink>
+        <NavLink
+          to="/volunteer"
+          className="text-white hover:text-[#d4d4d4] transition_custom text-xs md:text-lg lg:text-xl font-normal md:font-medium lg:font-medium "
+        >
+          Volunteer
         </NavLink>
         <button
           onClick={handleToggleTheme}

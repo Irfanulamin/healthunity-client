@@ -1,4 +1,5 @@
 import AddSupply from "../pages/private/AddSupply";
+import CreateTestimonial from "../pages/private/CreateTestimonial";
 import Dashboard from "../pages/private/Dashboard";
 
 import Supplies from "../pages/private/Supplies";
@@ -9,8 +10,9 @@ export const dashboardPath = [
     path: "dashboard",
     element: <Dashboard />,
   },
+
   {
-    name: "CURD Operations",
+    name: "Admin Operations",
     children: [
       {
         name: "Supplies",
@@ -21,6 +23,11 @@ export const dashboardPath = [
         name: "Add Supply Post",
         path: "create-supply",
         element: <AddSupply />,
+      },
+      {
+        name: "Create Testimonial",
+        path: "create-testimonial",
+        element: <CreateTestimonial />,
       },
     ],
   },

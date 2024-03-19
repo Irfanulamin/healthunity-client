@@ -18,7 +18,6 @@ const Community = () => {
       };
 
       const response: any = await createComments(commentData);
-      console.log(response);
 
       if (response.data && response.data.acknowledged === true) {
         console.log("Comment has been added successfully");
@@ -91,7 +90,10 @@ const Community = () => {
                   .slice()
                   .reverse()
                   .map((commentData: any, index: number) => (
-                    <div className="bg-white p-2 rounded-md border border-black w-full">
+                    <div
+                      key={index}
+                      className="bg-white p-2 rounded-md border border-black w-full"
+                    >
                       <div className="bg-[#d4d4d4] px-6 py-6 rounded-md">
                         <div>
                           <p className="text-left text-xl text-[#731010] py-2">
