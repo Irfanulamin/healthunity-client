@@ -35,7 +35,7 @@ const Community = () => {
 
   const { data } = useGetCommentsQuery("");
   return (
-    <div className=" min-h-[90vh] h-[100%]">
+    <div className=" min-h-[90vh] h-[100%] pb-10">
       <Container>
         <div className="p-2 ">
           <div className="mb-6 p-6 pt-8">
@@ -64,6 +64,7 @@ const Community = () => {
                       placeholder="comment"
                       {...register("comment")}
                       id="comment"
+                      required
                     />
                   </div>
                 </div>

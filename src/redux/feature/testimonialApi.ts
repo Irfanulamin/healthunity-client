@@ -3,7 +3,7 @@ import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 export const testimonialApi = createApi({
   reducerPath: "testimonialApi",
   baseQuery: fetchBaseQuery({
-    baseUrl: "http://localhost:5000/",
+    baseUrl: "https://healthunityserver.vercel.app/",
   }),
   tagTypes: ["testimonials"],
   endpoints: (builder) => ({

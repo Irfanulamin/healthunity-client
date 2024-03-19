@@ -32,14 +32,17 @@ const AboutUsPage = () => {
                   key={volunteerData._id}
                   className="hidden w-full md:flex lg:flex flex-col md:flex-row lg:flex-row justify-between items-center gap-6 border border-[#a80000] py-5 px-10 rounded-md bg-[#E2E5DE]"
                 >
-                  <p className="text-xl text-[#a80000] font-bold">
+                  <p className="text-lg text-[#a80000] font-bold">
                     +{volunteerData.phone}
                   </p>
-                  <p className="text-black text-xl font-bold">
+                  <p className="text-black text-lg font-bold">
                     {volunteerData.name}
                   </p>
-                  <p className="text-green-600 text-xl font-bold">
+                  <p className="text-green-600 text-lg font-bold">
                     {volunteerData.email}
+                  </p>
+                  <p className="text-red-600 text-lg font-bold">
+                    {volunteerData.location}
                   </p>
                 </div>
               ))}

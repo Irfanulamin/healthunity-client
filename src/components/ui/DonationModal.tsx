@@ -92,7 +92,11 @@ const DonationModal: React.FC<DonationModalProps> = ({
                 <div className="w-1/2">
                   <a
                     onClick={onClose}
-                    className="border border-white rounded-lg py-2 px-5 flex items-center justify-center gap-2 text-white dark:text-gray-200 font-semibold text-sm"
+                    className={`${
+                      darkMode
+                        ? "border-white text-white"
+                        : "border-black text-black"
+                    } border  rounded-lg py-2 px-5 flex items-center justify-center gap-2  font-semibold text-sm`}
                     href="#"
                   >
                     Close The Modal
