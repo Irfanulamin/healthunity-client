@@ -4,7 +4,7 @@ Welcome to HealthUnity, your trusted platform for health-related information and
 
 # Live URL
 
-Visit the HealthUnity website at [HealthUnity](https://healthunityproject.vercel.app/)
+Visit the HealthUnity website at [HealthUnity](https://healthunity-client.vercel.app/)
 
 # Technologies Used
 
@@ -27,4 +27,5 @@ HealthUnity leverages modern web technologies to provide a seamless and informat
 # Explore HealthUnity for a holistic approach to health and well-being!
 
 Feel free to customize the introduction and technologies section based on the specific features and technologies used in the HealthUnity website.
+
 # healthunity-client
