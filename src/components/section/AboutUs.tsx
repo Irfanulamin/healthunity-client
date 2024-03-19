@@ -1,7 +1,9 @@
 import Container from "../ui/Container";
 import { useEffect, useRef } from "react";
 import { motion, useAnimation, useInView } from "framer-motion";
+import { useAppSelector } from "../../redux/hook";
 const AboutUs = () => {
+  const { darkMode } = useAppSelector((store) => store.theme);
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true });
   const controls = useAnimation();
@@ -36,7 +38,11 @@ const AboutUs = () => {
           />
         </motion.div>
 
-        <p className="mb-4 text-left md:text-center lg:text-center text-black text-xs md:text-lg lg:text-xl font-medium px-0 md:px-12 lg:px-12 py-0 md:py-6 lg:py-6">
+        <p
+          className={`${
+            darkMode ? "text-white" : "text-black"
+          } mb-4 text-left md:text-center lg:text-center text-xs md:text-lg lg:text-xl font-medium px-0 md:px-12 lg:px-12 py-0 md:py-6 lg:py-6`}
+        >
           Established in <span className="text-[#a80000]">1998</span>,
           HealthUnity emerged with a clear purpose: to bolster community health
           and streamline the medical supply chain in the aftermath of disasters.

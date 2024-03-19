@@ -3,9 +3,11 @@ import { useGetSuppliesQuery } from "../../redux/feature/suppliesApi";
 import Container from "../../components/ui/Container";
 import { NavLink } from "react-router-dom";
 import { TFetchData } from "../../utils/Type";
+import { useAppSelector } from "../../redux/hook";
 
 const AllSupplies = () => {
   const { data } = useGetSuppliesQuery("");
+  const { darkMode } = useAppSelector((store) => store.theme);
   return (
     <Container>
       <div className="py-20">
@@ -13,7 +15,11 @@ const AllSupplies = () => {
           <h2 className=" text-3xl lg:text-5xl font-semibold  text-[#a80000]">
             Our Currently All Supplies!
           </h2>
-          <p className="text-black text-xs md:text-lg lg:text-lg py-2 lg:py-4 text-center ">
+          <p
+            className={`${
+              darkMode ? "text-white" : "text-black"
+            } text-xs md:text-lg lg:text-lg py-2 lg:py-4 text-center `}
+          >
             "Your donation brings hope to those in
             <span className="text-[#a80000]">
               {" "}

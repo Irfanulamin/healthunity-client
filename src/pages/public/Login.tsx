@@ -2,7 +2,7 @@ import { NavLink, useNavigate } from "react-router-dom";
 import Container from "../../components/ui/Container";
 import { useLoginUserMutation } from "../../redux/feature/loginApi";
 import { FieldValues, useForm } from "react-hook-form";
-import { useAppDispatch } from "../../redux/hook";
+import { useAppDispatch, useAppSelector } from "../../redux/hook";
 import { setUser } from "../../redux/feature/authSlice";
 
 const login = () => {
@@ -10,7 +10,7 @@ const login = () => {
   const [login] = useLoginUserMutation();
   const { register, handleSubmit } = useForm();
   const dispatch = useAppDispatch();
-
+  const { darkMode } = useAppSelector((store) => store.theme);
   const onSubmit = async (formData: FieldValues) => {
     try {
       const loginData = {
@@ -39,19 +39,31 @@ const login = () => {
         <div className="w-full md:w-1/2 lg:w-1/2">
           <img src="/login.jpg" alt="" />
         </div>
-        <div className="w-full md:w-1/2 lg:w-1/2 border-2 border-black rounded-md p-8">
+        <div
+          className={`${
+            darkMode ? "border-white" : "border-black"
+          } w-full md:w-1/2 lg:w-1/2 border-2 rounded-md p-8`}
+        >
           <div>
             <h2 className="text-left text-3xl py-4 lg:text-5xl font-semibold  text-[#a80000]">
               Login!
             </h2>
-            <p className="text-black text-sm  py-2 lg:py-4 text-left ">
+            <p
+              className={`${
+                darkMode ? "text-white" : "text-black"
+              } text-sm  py-2 lg:py-4 text-left `}
+            >
               Enter your email and password to access power of a admin.
             </p>
           </div>
           <form onSubmit={handleSubmit(onSubmit)}>
             <div className="flex flex-col gap-6">
               <div className="flex flex-col w-full">
-                <label className="text-left text-black font-semibold text-lg">
+                <label
+                  className={`${
+                    darkMode ? "text-white" : "text-black"
+                  }  text-left text-black font-semibold text-lg`}
+                >
                   Email
                 </label>
                 <input
@@ -62,7 +74,11 @@ const login = () => {
                 />
               </div>
               <div className="flex flex-col w-full">
-                <label className="text-left text-black font-semibold text-lg">
+                <label
+                  className={`${
+                    darkMode ? "text-white" : "text-black"
+                  }  text-left text-black font-semibold text-lg`}
+                >
                   Password
                 </label>
                 <input
@@ -74,7 +90,12 @@ const login = () => {
               </div>
             </div>
             <div className="text-left py-2">
-              <NavLink to="/register" className="text-black hover:underline">
+              <NavLink
+                to="/register"
+                className={`${
+                  darkMode ? "text-white" : "text-black"
+                }  hover:underline`}
+              >
                 If you are new,{" "}
                 <span className="text-[#a80000]">Register Now</span>
               </NavLink>

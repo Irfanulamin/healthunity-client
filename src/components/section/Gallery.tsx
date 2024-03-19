@@ -2,8 +2,10 @@ import Slider from "react-slick";
 
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import { useAppSelector } from "../../redux/hook";
 
 const Gallery = () => {
+  const { darkMode } = useAppSelector((store) => store.theme);
   const settings = {
     infinite: true,
     speed: 1000,
@@ -44,7 +46,11 @@ const Gallery = () => {
         <h2 className="text-3xl lg:text-5xl font-semibold  text-[#a80000]">
           Unity in Action!
         </h2>
-        <p className="text-black text-xs md:text-lg lg:text-lg py-2 lg:py-4 text-center ">
+        <p
+          className={`${
+            darkMode ? "text-white" : "text-black"
+          }  text-xs md:text-lg lg:text-lg py-2 lg:py-4 text-center `}
+        >
           Our <span className="text-[#a80000]">recent donations</span> are a
           powerful testament to the impact we're making. Through your
           generosity, essential medical supplies have swiftly reached

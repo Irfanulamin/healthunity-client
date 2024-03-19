@@ -1,8 +1,10 @@
 import Container from "../../components/ui/Container";
 import { useGetDonationsQuery } from "../../redux/feature/donationApi";
+import { useAppSelector } from "../../redux/hook";
 
 const Leaderboard = () => {
   const { data } = useGetDonationsQuery("");
+  const { darkMode } = useAppSelector((store) => store.theme);
   return (
     <div className=" min-h-[90vh] h-[100%] pb-20">
       <Container>
@@ -12,7 +14,11 @@ const Leaderboard = () => {
               Explore Generosity: Our Honors Leaderboard
             </h2>
             <div className="border-l-8 text-left border-[#a80000] rounded p-12">
-              <p className="text-black text-left text-xs md:text-xl lg:text-xl p-2 lg:p-4  ">
+              <p
+                className={`${
+                  darkMode ? "text-white" : "text-black"
+                } text-left text-xs md:text-xl lg:text-xl p-2 lg:p-4  `}
+              >
                 Discover the names of our top donors and their impactful
                 contributions on our Honors Leaderboard. Join us in recognizing
                 their generosity and commitment to supporting relief efforts.
@@ -25,7 +31,7 @@ const Leaderboard = () => {
                 .slice()
                 .reverse()
                 .map((donationPost: any, index: number) => (
-                  <div className="border border-black p-5 w-full md:w-1/2 lg:w-1/2 rounded-md flex justify-evenly items-center gap-5 flex-wrap">
+                  <div className="border bg-[#dcdad8] border-black p-5 w-full md:w-1/2 lg:w-1/2 rounded-md flex justify-evenly items-center gap-5 flex-wrap">
                     <div>
                       <h4 className="text-[#a80000] text-3xl lg:text-5xl font-bold">
                         #{index + 1}

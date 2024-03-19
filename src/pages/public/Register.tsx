@@ -2,11 +2,13 @@ import { FieldValues, useForm } from "react-hook-form";
 import Container from "../../components/ui/Container";
 import { useRegisterUserMutation } from "../../redux/feature/registerApi";
 import { useNavigate } from "react-router-dom";
+import { useAppSelector } from "../../redux/hook";
 
 const Register = () => {
   const navigate = useNavigate();
   const [registration] = useRegisterUserMutation();
   const { register, handleSubmit } = useForm();
+  const { darkMode } = useAppSelector((store) => store.theme);
 
   const onSubmit = async (formData: FieldValues) => {
     try {
@@ -37,12 +39,20 @@ const Register = () => {
         <div className="w-full md:w-1/2 lg:w-1/2">
           <img src="/register.jpg" alt="" />
         </div>
-        <div className="w-full md:w-1/2 lg:w-1/2 border-2 border-black rounded-md p-8">
+        <div
+          className={`${
+            darkMode ? "border-white" : "border-black"
+          } w-full md:w-1/2 lg:w-1/2 border-2 rounded-md p-8`}
+        >
           <div>
             <h2 className="text-left text-3xl py-4 lg:text-5xl font-semibold  text-[#a80000]">
               Register!
             </h2>
-            <p className="text-black text-sm  py-2 lg:py-4 text-left ">
+            <p
+              className={`${
+                darkMode ? "text-white" : "text-black"
+              } text-sm  py-2 lg:py-4 text-left `}
+            >
               "After registration, you'll be{" "}
               <span className="text-red-500">
                 redirected to the login page.{" "}
@@ -54,7 +64,11 @@ const Register = () => {
           <form onSubmit={handleSubmit(onSubmit)}>
             <div className="flex flex-col gap-6">
               <div className="flex flex-col w-full">
-                <label className="text-left text-black font-semibold text-lg">
+                <label
+                  className={`${
+                    darkMode ? "text-white" : "text-black"
+                  } text-left font-semibold text-lg`}
+                >
                   Username
                 </label>
                 <input
@@ -65,7 +79,11 @@ const Register = () => {
                 />
               </div>
               <div className="flex flex-col w-full">
-                <label className="text-left text-black font-semibold text-lg">
+                <label
+                  className={`${
+                    darkMode ? "text-white" : "text-black"
+                  } text-left font-semibold text-lg`}
+                >
                   Email
                 </label>
                 <input
@@ -76,7 +94,11 @@ const Register = () => {
                 />
               </div>
               <div className="flex flex-col w-full">
-                <label className="text-left text-black font-semibold text-lg">
+                <label
+                  className={`${
+                    darkMode ? "text-white" : "text-black"
+                  } text-left font-semibold text-lg`}
+                >
                   Password
                 </label>
                 <input

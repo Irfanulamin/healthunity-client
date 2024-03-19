@@ -2,6 +2,8 @@ import { NavLink } from "react-router-dom";
 import { useAppDispatch, useAppSelector } from "../../redux/hook";
 import { logOut, userCurrentToken } from "../../redux/feature/authSlice";
 import Swal from "sweetalert2";
+import { Moon, Sun } from "lucide-react";
+import { toggleTheme } from "../../redux/feature/themeSlice";
 
 const Navbar = () => {
   const authenticated = useAppSelector(userCurrentToken);
@@ -23,7 +25,10 @@ const Navbar = () => {
       }
     });
   };
-
+  const { darkMode } = useAppSelector((store) => store.theme);
+  const handleToggleTheme = () => {
+    dispatch(toggleTheme());
+  };
   return (
     <div className="bg-[#a80000] gap-2 flex flex-col md:flex-row lg:flex-row justify-between items-center px-2 md:px-24 lg:px-36 py-2 md:py-4 lg:py-5">
       <NavLink to="/">
@@ -60,6 +65,12 @@ const Navbar = () => {
         >
           Community
         </NavLink>
+        <button
+          onClick={handleToggleTheme}
+          className="rounded-lg backdrop-blur-[2px] p-1 inline-block"
+        >
+          {darkMode ? <Sun /> : <Moon size={24} />}
+        </button>
         {!authenticated && (
           <NavLink
             to="/login"

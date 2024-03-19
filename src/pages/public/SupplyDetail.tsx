@@ -4,14 +4,19 @@ import { useGetSupplyByIdQuery } from "../../redux/feature/suppliesApi";
 import Container from "../../components/ui/Container";
 import { useState } from "react";
 import DonationModal from "../../components/ui/DonationModal";
-import { userCurrentEmail } from "../../redux/feature/authSlice";
+import {
+  userCurrentEmail,
+  userCurrentToken,
+} from "../../redux/feature/authSlice";
 import { useAppSelector } from "../../redux/hook";
 
 const SupplyDetail = () => {
+  const { darkMode } = useAppSelector((store) => store.theme);
   const id = useParams().id; // Getting Product Params by ID
   const { data } = useGetSupplyByIdQuery(id);
   const [showModal, setShowModal] = useState(false);
   const userEmail = useAppSelector(userCurrentEmail);
+  const authenticated = useAppSelector(userCurrentToken);
 
   const handleShowModal = () => {
     setShowModal(true);
@@ -41,22 +46,32 @@ const SupplyDetail = () => {
               />
             </div>
             <div className="py-6">
-              <p className="text-black text-left text-3xl font-semibold py-1">
+              <p
+                className={`${
+                  darkMode ? "text-white" : "text-black"
+                } text-left text-3xl font-semibold py-1`}
+              >
                 {data.title}
               </p>
               <p className="text-[#a80000] text-left text-lg font-medium pb-1">
                 Category - {data.category}
               </p>
-              <p className="text-black text-left text-lg font-medium pb-1">
+              <p
+                className={`${
+                  darkMode ? "text-white" : "text-black"
+                }  text-left text-lg font-medium pb-1`}
+              >
                 Description:- {data.description}
               </p>
               <p className="text-[#741010] text-center text-2xl font-semibold pb-1">
                 {data.amount} $
               </p>
             </div>
-            <p className=" text-red-700 py-2">
-              ( you must login before donating )
-            </p>
+            {!authenticated && (
+              <p className=" text-red-700 py-2">
+                ( you must login before donating )
+              </p>
+            )}
             <button
               onClick={() => handleShowModal()}
               className=" text-3xl w-full rounded-sm border-none hover:bg-white bg-[#731010] hover:text-[#731010] border-white text-white  py-6 transition_custom"

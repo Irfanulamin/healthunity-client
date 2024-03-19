@@ -2,6 +2,7 @@ import { useNavigate } from "react-router-dom";
 import { useCreateDonationsMutation } from "../../redux/feature/donationApi";
 import { TFetchData } from "../../utils/Type";
 import React from "react";
+import { useAppSelector } from "../../redux/hook";
 
 type DonationModalProps = {
   userEmail: string;
@@ -14,6 +15,7 @@ const DonationModal: React.FC<DonationModalProps> = ({
   data,
   onClose,
 }) => {
+  const { darkMode } = useAppSelector((store) => store.theme);
   const [createDonation] = useCreateDonationsMutation();
   const navigate = useNavigate();
   const handleDonation = () => {
@@ -27,7 +29,11 @@ const DonationModal: React.FC<DonationModalProps> = ({
   return (
     <div className="fixed top-0 left-0 w-screen h-screen z-50 bg-black/60 backdrop-blur-sm">
       <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-[420px] sm:max-w-[600px] lg:max-w-[984px] p-4 max-h-[90vh] overflow-auto">
-        <div className="bg-white shadow-md  rounded-2xl overflow-hidden">
+        <div
+          className={`${
+            darkMode ? "bg-black" : "bg-white"
+          } shadow-md  rounded-2xl overflow-hidden`}
+        >
           <div className="p-5 lg:p-11">
             <div>
               <div>
@@ -40,15 +46,31 @@ const DonationModal: React.FC<DonationModalProps> = ({
                   <img src={data.image} className="w-full h-36 object-cover" />
                 </div>
                 <div>
-                  <p className="text-black font-semibold ">. {data.title}</p>
-                  <p className="text-black font-semibold ">. {data.category}</p>
+                  <p
+                    className={`${
+                      darkMode ? "text-white" : "text-black"
+                    } font-semibold `}
+                  >
+                    . {data.title}
+                  </p>
+                  <p
+                    className={`${
+                      darkMode ? "text-white" : "text-black"
+                    } font-semibold `}
+                  >
+                    . {data.category}
+                  </p>
                   <p className="text-red-500 text-center font-semibold ">
                     {" "}
                     {data.amount}
                   </p>
                   {userEmail ? (
                     <p className="text-green-500 font-semibold">
-                      <span className="text-black">Your Email :-</span>{" "}
+                      <span
+                        className={`${darkMode ? "text-white" : "text-black"}`}
+                      >
+                        Your Email :-
+                      </span>{" "}
                       {userEmail}
                     </p>
                   ) : (
@@ -70,7 +92,7 @@ const DonationModal: React.FC<DonationModalProps> = ({
                 <div className="w-1/2">
                   <a
                     onClick={onClose}
-                    className="border border-[#74766F] rounded-lg py-2 px-5 flex items-center justify-center gap-2 text-[#6F6F6F] dark:text-gray-200 font-semibold text-sm"
+                    className="border border-white rounded-lg py-2 px-5 flex items-center justify-center gap-2 text-white dark:text-gray-200 font-semibold text-sm"
                     href="#"
                   >
                     Close The Modal

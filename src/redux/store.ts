@@ -16,6 +16,7 @@ import {
 import storage from "redux-persist/lib/storage";
 import { commentApi } from "./feature/commentApi";
 import { donationApi } from "./feature/donationApi";
+import themeReducer from "./feature/themeSlice";
 
 const persistConifg = {
   key: "auth",
@@ -32,6 +33,7 @@ const store = configureStore({
     [commentApi.reducerPath]: commentApi.reducer,
     [donationApi.reducerPath]: donationApi.reducer,
     auth: persistedAuthReducer,
+    theme: themeReducer,
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({

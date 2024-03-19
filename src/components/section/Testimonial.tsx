@@ -2,8 +2,10 @@ import Slider from "react-slick";
 
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import { useAppSelector } from "../../redux/hook";
 
 const Testimonial = () => {
+  const { darkMode } = useAppSelector((store) => store.theme);
   const settings = {
     speed: 1000,
     slidesToShow: 3,
@@ -43,7 +45,11 @@ const Testimonial = () => {
         <h2 className="text-3xl lg:text-5xl font-semibold  text-[#a80000]">
           Top 6 Provider Testimonials!
         </h2>
-        <p className="text-black text-xs md:text-lg lg:text-lg py-2 lg:py-4 text-center ">
+        <p
+          className={`${
+            darkMode ? "text-white" : "text-black"
+          }  text-xs md:text-lg lg:text-lg py-2 lg:py-4 text-center `}
+        >
           <span className="text-[#a80000]">"Recent Donors' Response:</span>{" "}
           HealthUnity's compassionate donations resonate as a beacon of hope,
           making a tangible difference in post-disaster{" "}

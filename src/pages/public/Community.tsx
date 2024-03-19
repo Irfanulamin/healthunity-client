@@ -5,9 +5,11 @@ import {
   useGetCommentsQuery,
 } from "../../redux/feature/commentApi";
 import Swal from "sweetalert2";
+import { useAppSelector } from "../../redux/hook";
 
 const Community = () => {
   const { register, handleSubmit } = useForm();
+  const { darkMode } = useAppSelector((store) => store.theme);
   const [createComments] = useCreateCommentsMutation();
   const onSubmit = async (formData: FieldValues) => {
     try {
@@ -41,12 +43,16 @@ const Community = () => {
             <h2 className=" text-3xl lg:text-5xl font-semibold  text-[#a80000]">
               Welcome to Our Community Gratitude Wall!
             </h2>
-            <p className="text-black text-xs md:text-lg lg:text-lg py-2 lg:py-4 text-center ">
+            <p
+              className={`${
+                darkMode ? "text-white" : "text-black"
+              } text-black text-xs md:text-lg lg:text-lg py-2 lg:py-4 text-center `}
+            >
               Community Gratitude Wall: Where Support Shines Bright. Share Your
               Thanks, Lift Spirits High.
             </p>
           </div>
-          <div className="border border-black rounded-md p-6">
+          <div className="border border-black rounded-md p-6 bg-[#e8e6e5]">
             <h2 className="text-left text-3xl lg:text-5xl font-semibold py-2 text-[#a80000]">
               Post Your Comment
             </h2>
@@ -55,7 +61,7 @@ const Community = () => {
                 <div className="flex flex-col gap-6">
                   <div className="flex flex-col w-full">
                     <input
-                      className="focus:border-b-[#a80000] text-black focus:text-[#a80000] font-semibold p-2 border-b-2 outline-none border-black"
+                      className="focus:border-b-[#a80000] text-black focus:text-[#a80000] font-semibold p-2 border-b-2 outline-none border-black bg-[#e8e6e5]"
                       placeholder="comment"
                       {...register("comment")}
                       id="comment"
