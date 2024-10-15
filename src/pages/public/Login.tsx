@@ -8,7 +8,12 @@ import { setUser } from "../../redux/feature/authSlice";
 const login = () => {
   const navigate = useNavigate();
   const [login] = useLoginUserMutation();
-  const { register, handleSubmit } = useForm();
+  const { register, handleSubmit } = useForm({
+    defaultValues: {
+      email: "healthunityadmin@admin.com",
+      password: "!@#healthunityadmin!@#",
+    },
+  });
   const dispatch = useAppDispatch();
   const { darkMode } = useAppSelector((store) => store.theme);
   const onSubmit = async (formData: FieldValues) => {
@@ -86,6 +91,7 @@ const login = () => {
                   placeholder="password"
                   {...register("password")}
                   id="password"
+                  type="password"
                 />
               </div>
             </div>

@@ -11,7 +11,7 @@ const SupplypostSection = () => {
   return (
     <div className="py-20">
       <div className="mb-12">
-        <h2 className=" text-3xl lg:text-5xl font-semibold  text-[#a80000]">
+        <h2 className=" text-3xl text-center lg:text-5xl font-semibold  text-[#a80000]">
           Our Supplies!
         </h2>
         <p
@@ -31,14 +31,18 @@ const SupplypostSection = () => {
       <div className="flex flex-wrap place-content-center gap-6 md:gap-12 lg:gap-24">
         {data &&
           data.slice(0, 6).map((supply: TFetchData) => (
-            <Card key={supply._id} style={{ width: 300, border: "1px solid" }}>
-              <div>
+            <Card
+              hoverable
+              style={{ width: 320 }}
+              cover={
                 <img
+                  alt="example"
                   src={supply.image}
                   className="h-56 w-full object-cover"
                   loading="lazy"
                 />
-              </div>
+              }
+            >
               <div>
                 <p className="text-black text-left text-xl font-semibold py-1">
                   {supply.title}

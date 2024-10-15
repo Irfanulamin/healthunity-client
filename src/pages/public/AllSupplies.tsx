@@ -33,16 +33,17 @@ const AllSupplies = () => {
           {data &&
             data.map((supply: TFetchData) => (
               <Card
-                key={supply._id}
-                style={{ width: 300, border: "1px solid" }}
-              >
-                <div>
+                hoverable
+                style={{ width: 320 }}
+                cover={
                   <img
+                    alt="example"
                     src={supply.image}
                     className="h-56 w-full object-cover"
                     loading="lazy"
                   />
-                </div>
+                }
+              >
                 <div>
                   <p className="text-black text-left text-xl font-semibold py-1">
                     {supply.title}
