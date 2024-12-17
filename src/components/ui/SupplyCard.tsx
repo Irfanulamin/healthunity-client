@@ -13,7 +13,7 @@ const SupplyCard = ({ supply }: any) => {
         <Badge className="absolute top-2 left-2 bg-red-600 hover:bg-red-700">
           {supply.category}
         </Badge>
-        <div className="absolute inset-0 bg-blue-400 bg-opacity-50 flex items-end justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+        <div className="absolute inset-0 bg-slate-900 bg-opacity-50 flex items-end justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
           <span className="text-white text-xl font-semibold p-4 transform translate-y-full group-hover:translate-y-0 transition-transform duration-300 ease-in-out">
             {supply.title}
           </span>
