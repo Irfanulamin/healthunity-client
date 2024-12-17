@@ -9,6 +9,10 @@ import {
   userCurrentToken,
 } from "../../redux/feature/authSlice";
 import { useAppSelector } from "../../redux/hook";
+import AllSuppliesSection from "@/components/section/AllSuppliesSection";
+import HeadingText from "@/components/ui/HeadingText";
+import { Card, CardContent } from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
 
 const SupplyDetail = () => {
   const { darkMode } = useAppSelector((store) => store.theme);
@@ -37,49 +41,69 @@ const SupplyDetail = () => {
       </>
       <Container>
         {data && (
-          <div className="py-10">
-            <div>
-              <img
-                src={data.image}
-                className="h-[34rem] w-full object-cover"
-                loading="lazy"
-              />
+          <Card
+            className={`w-full max-w-4xl mx-auto overflow-hidden mt-6 md:md-12 xl:mt-24  ${
+              darkMode ? "bg-gray-800 text-white" : "bg-white text-gray-800"
+            }`}
+          >
+            <div className="flex flex-col md:flex-row">
+              <div className="">
+                <img
+                  src={data.image}
+                  alt={data.title}
+                  className="h-80 md:h-full w-full object-cover"
+                  loading="lazy"
+                />
+              </div>
+              <CardContent className="flex flex-col justify-between p-6 md:w-1/2">
+                <div>
+                  <h2 className="text-3xl md:text-4xl font-bold mb-4 text-black">
+                    {data.title}
+                  </h2>
+                  <p className="text-base font-medium text-red-600 mb-2">
+                    Category: {data.category}
+                  </p>
+                  <p
+                    className={`text-base mb-4 ${
+                      darkMode ? "text-gray-300" : "text-gray-600"
+                    }`}
+                  >
+                    {data.description}
+                  </p>
+                </div>
+                {!authenticated && (
+                  <p className="text-red-600 text-sm italic mb-4">
+                    You must log in before donating.
+                  </p>
+                )}
+                <div className="flex justify-start items-start gap-2">
+                  <div>
+                    <p className="text-3xl font-bold text-red-700 mb-4">
+                      {data.amount}
+                    </p>
+                  </div>
+                  <div>
+                    <Button
+                      onClick={handleShowModal}
+                      className="bg-red-700 hover:bg-red-800 text-white px-8"
+                    >
+                      Donate Now
+                    </Button>
+                  </div>
+                </div>
+              </CardContent>
             </div>
-            <div className="py-6">
-              <p
-                className={`${
-                  darkMode ? "text-white" : "text-black"
-                } text-left text-3xl font-semibold py-1`}
-              >
-                {data.title}
-              </p>
-              <p className="text-[#a80000] text-left text-lg font-medium pb-1">
-                Category - {data.category}
-              </p>
-              <p
-                className={`${
-                  darkMode ? "text-white" : "text-black"
-                }  text-left text-lg font-medium pb-1`}
-              >
-                Description:- {data.description}
-              </p>
-              <p className="text-[#741010] text-center text-2xl font-semibold pb-1">
-                {data.amount} $
-              </p>
-            </div>
-            {!authenticated && (
-              <p className=" text-red-700 py-2">
-                ( you must login before donating )
-              </p>
-            )}
-            <button
-              onClick={() => handleShowModal()}
-              className=" text-3xl w-full rounded-sm border-none hover:bg-white bg-[#731010] hover:text-[#731010] border-white text-white  py-6 transition_custom"
-            >
-              Donate Now
-            </button>
-          </div>
+          </Card>
         )}
+        <hr className="my-10 md:my-24 xl:my-44 border border-black/20" />
+        <div className="xl:mt-16 mt-2 md:mt-8  mb-16 xl:mb-32">
+          <HeadingText
+            title="Support a Cause"
+            body="Your contribution can make a real difference in someone's life. Explore our donation items and help us bring hope to those in need."
+          />
+
+          <AllSuppliesSection />
+        </div>
       </Container>
     </>
   );

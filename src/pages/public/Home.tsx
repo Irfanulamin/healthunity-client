@@ -10,8 +10,8 @@ import SupplypostSection from "../../components/section/SupplypostSection";
 const Home = () => {
   return (
     <>
+      <Banner></Banner>
       <Container>
-        <Banner></Banner>
         <SupplypostSection></SupplypostSection>
         <Testimonial></Testimonial>
         <Gallery></Gallery>

@@ -1,29 +1,18 @@
+import HeadingText from "@/components/ui/HeadingText";
 import Container from "../../components/ui/Container";
 import { useGetDonationsQuery } from "../../redux/feature/donationApi";
-import { useAppSelector } from "../../redux/hook";
 
 const Leaderboard = () => {
   const { data } = useGetDonationsQuery("");
-  const { darkMode } = useAppSelector((store) => store.theme);
   return (
     <div className=" min-h-[90vh] h-[100%] pb-20">
       <Container>
         <div>
-          <div className="mb-6 p-6 pt-8">
-            <h2 className=" text-3xl lg:text-5xl font-semibold  text-[#a80000]">
-              Explore Generosity: Our Honors Leaderboard
-            </h2>
-            <div className="border-l-8 text-left border-[#a80000] rounded p-12">
-              <p
-                className={`${
-                  darkMode ? "text-white" : "text-black"
-                } text-left text-xs md:text-xl lg:text-xl p-2 lg:p-4  `}
-              >
-                Discover the names of our top donors and their impactful
-                contributions on our Honors Leaderboard. Join us in recognizing
-                their generosity and commitment to supporting relief efforts.
-              </p>
-            </div>
+          <div className="pt-1 md:pt-6 xl:pt-12">
+            <HeadingText
+              title="Our Honors Leaderboard"
+              body="Discover the names of our top donors and their impactful contributions on our Honors Leaderboard. Join us in recognizing their generosity and commitment to supporting relief efforts."
+            />
           </div>
           <div className="flex flex-wrap justify-center items-start  gap-6">
             {data &&
@@ -31,9 +20,9 @@ const Leaderboard = () => {
                 .slice()
                 .reverse()
                 .map((donationPost: any, index: number) => (
-                  <div className="border bg-[#dcdad8] border-black p-5 w-full md:w-1/2 lg:w-1/2 rounded-md flex justify-evenly items-center gap-5 flex-wrap">
+                  <div className="border bg-white border-black/20 p-5 w-full md:w-1/2 lg:w-1/2 rounded-2xl flex justify-start items-center gap-5 flex-wrap">
                     <div>
-                      <h4 className="text-[#a80000] text-3xl lg:text-5xl font-bold">
+                      <h4 className="text-[#a80000] text-xl lg:text-3xl font-semibold">
                         #{index + 1}
                       </h4>
                     </div>

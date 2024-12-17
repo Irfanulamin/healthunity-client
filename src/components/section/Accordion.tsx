@@ -31,7 +31,7 @@ const Accordion = () => {
         } border pb-2 rounded-md`}
       >
         <div>
-          <h2 className=" text-3xl lg:text-5xl font-semibold  text-white bg-[#1f1f1f] py-4 rounded">
+          <h2 className=" text-3xl lg:text-4xl text-center font-semibold  text-white bg-[#1f1f1f] py-4 rounded">
             Most Asked Questions!
           </h2>
         </div>

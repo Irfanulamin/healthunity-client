@@ -1,3 +1,4 @@
+import CategoryAnalysisCharts from "@/pages/private/DashboardChart";
 import AddSupply from "../pages/private/AddSupply";
 import CreateTestimonial from "../pages/private/CreateTestimonial";
 import Dashboard from "../pages/private/Dashboard";
@@ -28,6 +29,11 @@ export const dashboardPath = [
         name: "Create Testimonial",
         path: "create-testimonial",
         element: <CreateTestimonial />,
+      },
+      {
+        name: "Statistics",
+        path: "",
+        element: <CategoryAnalysisCharts />,
       },
     ],
   },

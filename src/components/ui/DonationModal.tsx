@@ -28,7 +28,7 @@ const DonationModal: React.FC<DonationModalProps> = ({
   };
   return (
     <div className="fixed top-0 left-0 w-screen h-screen z-50 bg-black/60 backdrop-blur-sm">
-      <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-[420px] sm:max-w-[600px] lg:max-w-[984px] p-4 max-h-[90vh] overflow-auto">
+      <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-[360px] sm:max-w-[300px] md:max-w-[500px]  lg:max-w-[650px] p-4 max-h-[90vh] overflow-auto">
         <div
           className={`${
             darkMode ? "bg-black" : "bg-white"
@@ -37,13 +37,16 @@ const DonationModal: React.FC<DonationModalProps> = ({
           <div className="p-5 lg:p-11">
             <div>
               <div>
-                <h2 className="text-2xl lg:text-5xl font-semibold  text-[#a80000]">
+                <h2 className="text-lg lg:text-3xl font-semibold text-center text-[#a80000]">
                   Confirm Your Donation!
                 </h2>
               </div>
-              <div className="py-2">
+              <div className="py-2 flex flex-col md:flex-row lg:flex-row justify-center items-center gap-2">
                 <div>
-                  <img src={data.image} className="w-full h-36 object-cover" />
+                  <img
+                    src={data.image}
+                    className="w-44 h-44 object-cover rounded-xl"
+                  />
                 </div>
                 <div>
                   <p
@@ -51,17 +54,16 @@ const DonationModal: React.FC<DonationModalProps> = ({
                       darkMode ? "text-white" : "text-black"
                     } font-semibold `}
                   >
-                    . {data.title}
+                    {data.title}
                   </p>
                   <p
                     className={`${
                       darkMode ? "text-white" : "text-black"
                     } font-semibold `}
                   >
-                    . {data.category}
+                    {data.category}
                   </p>
-                  <p className="text-red-500 text-center font-semibold ">
-                    {" "}
+                  <p className="text-red-500 text-left font-semibold ">
                     {data.amount}
                   </p>
                   {userEmail ? (
@@ -99,7 +101,7 @@ const DonationModal: React.FC<DonationModalProps> = ({
                     } border  rounded-lg py-2 px-5 flex items-center justify-center gap-2  font-semibold text-sm`}
                     href="#"
                   >
-                    Close The Modal
+                    Close
                   </a>
                 </div>
               </div>

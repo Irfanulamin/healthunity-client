@@ -66,7 +66,7 @@ const Navbar = () => {
           Community
         </NavLink>
         <NavLink
-          to="/about-us"
+          to="/our-volunteer"
           className="text-white hover:text-[#d4d4d4] transition_custom text-xs md:text-lg lg:text-xl font-normal md:font-medium lg:font-medium "
         >
           Our Volunteers

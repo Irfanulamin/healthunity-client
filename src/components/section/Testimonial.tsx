@@ -2,11 +2,10 @@ import Slider from "react-slick";
 
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import { useAppSelector } from "../../redux/hook";
 import { useGetTestimonialsQuery } from "../../redux/feature/testimonialApi";
+import HeadingText from "../ui/HeadingText";
 
 const Testimonial = () => {
-  const { darkMode } = useAppSelector((store) => store.theme);
   const { data } = useGetTestimonialsQuery("");
   const settings = {
     speed: 1000,
@@ -43,36 +42,19 @@ const Testimonial = () => {
   };
   return (
     <div className="pt-10 pb-20 p-3">
-      <div className="p-6">
-        <h2 className="text-3xl lg:text-5xl font-semibold  text-[#a80000]">
-          Top 6 Provider Testimonials!
-        </h2>
-        <p
-          className={`${
-            darkMode ? "text-white" : "text-black"
-          }  text-xs md:text-lg lg:text-lg py-2 lg:py-4 text-center `}
-        >
-          <span className="text-[#a80000]">"Recent Donors' Response:</span>{" "}
-          HealthUnity's compassionate donations resonate as a beacon of hope,
-          making a tangible difference in post-disaster{" "}
-          <span className="text-[#a80000]">
-            healthcare and community well-being
-          </span>
-          ."
-        </p>
-      </div>
+      <HeadingText
+        title="Top 6 Provider Testimonials!"
+        body="Recent Donors' Response: HealthUnity's compassionate donations resonate as a beacon of hope, making a tangible difference in post-disaster healthcare and community well-being."
+      />
 
       <Slider {...settings} className="">
         {data &&
           data.slice(0, 6).map((testimonialData: any) => (
-            <div
-              key={testimonialData._id}
-              className="bg-white p-2 rounded-md border border-black"
-            >
-              <div className=" bg-[#d4d4d4] px-6 py-12 rounded-md ">
+            <div key={testimonialData._id} className="p-4 rounded-md ">
+              <div className=" bg-black/10 px-6 py-12 rounded-md ">
                 <div>
-                  <p className="text-left text-[#731010]">
-                    {testimonialData.comment}
+                  <p className="text-left text-[#731010] mb-4 line-clamp-3">
+                    "{testimonialData.comment}"
                   </p>
                 </div>
                 <hr className="border-[#707070] py-3" />

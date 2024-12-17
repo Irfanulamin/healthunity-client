@@ -16,7 +16,7 @@ const Banner = () => {
   });
   return (
     <motion.div initial={{ opacity: 0, y: 30 }} animate={controls}>
-      <section className="banner h-[50vh] lg:h-[90vh] my-1">
+      <section className="banner h-[50vh] lg:h-[100vh] ">
         <div className="w-full h-full flex flex-col justify-center items-center ">
           <div>
             <p className="text-xl md:text-5xl lg:text-5xl p-3 font-medium text-white primary_text text-center">
@@ -42,12 +42,12 @@ const Banner = () => {
           </div>
           <div className="flex justify-center items-center gap-4 mt-7">
             <NavLink to="/supplies">
-              <button className=" rounded-sm border-none hover:bg-white bg-[#731010] hover:text-[#731010] border-white text-white px-3 py-1 transition_custom">
+              <button className=" rounded-3xl border-none hover:bg-white bg-[#731010] hover:text-[#731010] border-white text-white px-6 py-3 text-xl transition_custom">
                 Donate Now
               </button>
             </NavLink>
-            <NavLink to="/about-us">
-              <button className="rounded-sm btn-outline border-white hover:border-[#731010] hover:text-[#731010] text-white hover:bg-white px-3 py-1 transition_custom">
+            <NavLink to="/our-volunteer">
+              <button className=" rounded-3xl btn-outline border-white hover:border-[#731010] hover:text-[#731010] text-white hover:bg-white px-6 py-3 text-xl transition_custom">
                 About Us
               </button>
             </NavLink>

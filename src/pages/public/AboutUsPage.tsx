@@ -1,51 +1,69 @@
+import HeadingText from "@/components/ui/HeadingText";
 import Container from "../../components/ui/Container";
 import { useGetVolunteersQuery } from "../../redux/feature/volunteerApi";
 import { useAppSelector } from "../../redux/hook";
 
-const AboutUsPage = () => {
+const OurVolunteers = () => {
   const { darkMode } = useAppSelector((store) => store.theme);
   const { data } = useGetVolunteersQuery("");
   return (
     <div className=" min-h-[90vh] h-[100%]">
       <Container>
-        <div className="mb-6 p-6 pt-8">
-          <h2 className=" text-3xl lg:text-5xl font-semibold  text-[#a80000]">
-            Our Dedicated Volunteers
-          </h2>
-          <div className="border-l-8 text-left border-[#a80000] rounded p-4">
-            <p
-              className={`${
-                darkMode ? "text-white" : "text-black"
-              } text-left text-xs md:text-xl lg:text-xl p-2 lg:p-4  `}
-            >
-              Our volunteers are the backbone of our organization, selflessly
+        <div className="pt-1 md:pt-6 xl:pt-8">
+          <HeadingText
+            title="Our Dedicated Volunteers"
+            body="Our volunteers are the backbone of our organization, selflessly
               dedicating their time and efforts to uplift our community's health
               and spirit. Their tireless commitment embodies the essence of
               compassion and solidarity, driving positive change with every act
               of kindness.
-            </p>
-          </div>
+"
+          />
+
           <div className="flex flex-col justify-center items-center gap-6 py-12">
-            {data &&
-              data.map((volunteerData: any) => (
-                <div
-                  key={volunteerData._id}
-                  className="hidden w-full md:flex lg:flex flex-col md:flex-row lg:flex-row justify-between items-center gap-6 border border-[#a80000] py-5 px-10 rounded-md bg-[#E2E5DE]"
-                >
-                  <p className="text-lg text-[#a80000] font-bold">
-                    +{volunteerData.phone}
-                  </p>
-                  <p className="text-black text-lg font-bold">
-                    {volunteerData.name}
-                  </p>
-                  <p className="text-green-600 text-lg font-bold">
-                    {volunteerData.email}
-                  </p>
-                  <p className="text-red-600 text-lg font-bold">
-                    {volunteerData.location}
-                  </p>
-                </div>
-              ))}
+            {data && (
+              <div className="overflow-x-auto">
+                <table className="table-auto border-collapse border border-gray-300 w-full">
+                  <thead>
+                    <tr className="bg-gray-200">
+                      <th className="border border-gray-300 px-4 text-black py-2 text-left">
+                        Phone
+                      </th>
+                      <th className="border border-gray-300 px-4 text-black py-2 text-left">
+                        Name
+                      </th>
+                      <th className="border border-gray-300 px-4 text-black py-2 text-left">
+                        Email
+                      </th>
+                      <th className="border border-gray-300 px-4 text-black py-2 text-left">
+                        Location
+                      </th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {data.map((volunteerData: any) => (
+                      <tr
+                        key={volunteerData._id}
+                        className="bg-gray-100 even:bg-white"
+                      >
+                        <td className="border border-gray-300 px-4 py-2 text-black font-semibold">
+                          +{volunteerData.phone}
+                        </td>
+                        <td className="border border-gray-300 px-4 py-2 text-black font-semibold">
+                          {volunteerData.name}
+                        </td>
+                        <td className="border border-gray-300 px-4 py-2 text-black font-semibold">
+                          {volunteerData.email}
+                        </td>
+                        <td className="border border-gray-300 px-4 py-2 text-black font-semibold">
+                          {volunteerData.location}
+                        </td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+            )}
           </div>
         </div>
         <div className=" rounded-md border my-12">
@@ -78,4 +96,4 @@ const AboutUsPage = () => {
   );
 };
 
-export default AboutUsPage;
+export default OurVolunteers;

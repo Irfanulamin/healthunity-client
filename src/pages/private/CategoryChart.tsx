@@ -8,6 +8,7 @@ const CategoryChart = () => {
   const chartInstance: any = useRef(null);
 
   const { data, isLoading } = useGetSuppliesQuery("");
+  console.log(data);
   useEffect(() => {
     if (data) {
       if (chartInstance.current) {

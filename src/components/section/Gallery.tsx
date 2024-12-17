@@ -2,10 +2,9 @@ import Slider from "react-slick";
 
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import { useAppSelector } from "../../redux/hook";
+import HeadingText from "../ui/HeadingText";
 
 const Gallery = () => {
-  const { darkMode } = useAppSelector((store) => store.theme);
   const settings = {
     infinite: true,
     speed: 1000,
@@ -42,22 +41,11 @@ const Gallery = () => {
   };
   return (
     <div className="pt-10 pb-20 p-6">
-      <div className="p-6">
-        <h2 className="text-3xl lg:text-5xl font-semibold  text-[#a80000]">
-          Unity in Action!
-        </h2>
-        <p
-          className={`${
-            darkMode ? "text-white" : "text-black"
-          }  text-xs md:text-lg lg:text-lg py-2 lg:py-4 text-center `}
-        >
-          Our <span className="text-[#a80000]">recent donations</span> are a
-          powerful testament to the impact we're making. Through your
-          generosity, essential medical supplies have swiftly reached
-          communities in need, empowering healthcare providers and fostering
-          resilience in the aftermath of disasters.
-        </p>
-      </div>
+      <HeadingText
+        title="Unity in Action!"
+        body="Our recent donations are a powerful testament to the impact we're making. Through your generosity, essential medical supplies have swiftly reached communities in need, empowering healthcare providers and fostering
+ resilience in the aftermath of disasters."
+      />
       <Slider {...settings}>
         <div>
           <img

@@ -5,11 +5,10 @@ import {
   useGetCommentsQuery,
 } from "../../redux/feature/commentApi";
 import Swal from "sweetalert2";
-import { useAppSelector } from "../../redux/hook";
+import HeadingText from "@/components/ui/HeadingText";
 
 const Community = () => {
   const { register, handleSubmit } = useForm();
-  const { darkMode } = useAppSelector((store) => store.theme);
   const [createComments] = useCreateCommentsMutation();
   const onSubmit = async (formData: FieldValues) => {
     try {
@@ -38,21 +37,15 @@ const Community = () => {
     <div className=" min-h-[90vh] h-[100%] pb-10">
       <Container>
         <div className="p-2 ">
-          <div className="mb-6 p-6 pt-8">
-            <h2 className=" text-3xl lg:text-5xl font-semibold  text-[#a80000]">
-              Welcome to Our Community Gratitude Wall!
-            </h2>
-            <p
-              className={`${
-                darkMode ? "text-white" : "text-black"
-              } text-black text-xs md:text-lg lg:text-lg py-2 lg:py-4 text-center `}
-            >
-              Community Gratitude Wall: Where Support Shines Bright. Share Your
-              Thanks, Lift Spirits High.
-            </p>
+          <div className="pt-1 md:pt-6 xl:pt-12">
+            <HeadingText
+              title="Welcome to Our Community Gratitude Wall!"
+              body="Community Gratitude Wall: Where Support Shines Bright. Share Your
+ Thoughts, Lift Spirits High."
+            />
           </div>
-          <div className="border border-black rounded-md p-6 bg-[#e8e6e5]">
-            <h2 className="text-left text-3xl lg:text-5xl font-semibold py-2 text-[#a80000]">
+          <div>
+            <h2 className="text-left text-xl lg:text-3xl font-semibold py-2 text-[#a80000]">
               Post Your Comment
             </h2>
             <div>
@@ -60,7 +53,7 @@ const Community = () => {
                 <div className="flex flex-col gap-6">
                   <div className="flex flex-col w-full">
                     <input
-                      className="focus:border-b-[#a80000] text-black focus:text-[#a80000] font-semibold p-2 border-b-2 outline-none border-black bg-[#e8e6e5]"
+                      className="focus:border-b-[#a80000] text-black focus:text-[#a80000] font-semibold p-2 border-b-2 outline-none border-black"
                       placeholder="comment"
                       {...register("comment")}
                       id="comment"
@@ -80,12 +73,12 @@ const Community = () => {
             </div>
           </div>
           <div>
-            <div className="py-3">
-              <h2 className="text-left text-3xl lg:text-5xl rounded-md font-semibold p-2 bg-[#a80000] text-white">
+            <div className="py-12">
+              <h2 className=" text-center text-xl lg:text-3xl rounded-md font-semibold p-2 bg-[#a80000] text-white">
                 Comment Section
               </h2>
             </div>
-            <div className="flex flex-col justify-center items-center gap-6 p-2">
+            <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
               {data &&
                 data
                   .slice()
@@ -93,29 +86,29 @@ const Community = () => {
                   .map((commentData: any, index: number) => (
                     <div
                       key={index}
-                      className="bg-white p-2 rounded-md border border-black w-full"
+                      className="bg-white rounded-lg shadow-md overflow-hidden border border-gray-400 transition-all duration-300 hover:shadow-lg"
                     >
-                      <div className="bg-[#d4d4d4] px-6 py-6 rounded-md">
-                        <div>
-                          <p className="text-left text-xl text-[#731010] py-2">
-                            {commentData.comment}
-                          </p>
-                        </div>
-                        <div className="flex justify-between items-center gap-2 py-2">
+                      <div className="p-6">
+                        <div className="flex items-center space-x-4 mb-4">
                           <img
                             src="/avatar.jpg"
-                            alt=""
-                            className="w-12 h-12 rounded-full"
+                            alt="User avatar"
+                            width={48}
+                            height={48}
+                            className="rounded-full"
                           />
                           <div>
-                            <p className="text-[#a80000] text-left">
+                            <p className="text-sm font-semibold text-gray-700">
                               Comment No. {index + 1}
                             </p>
-                            <p className="text-[#a80000] text-left">
-                              HealthUnity users
+                            <p className="text-xs text-gray-500">
+                              HealthUnity user
                             </p>
                           </div>
                         </div>
+                        <p className="text-lg text-gray-800 mb-4 leading-relaxed">
+                          {commentData.comment}
+                        </p>
                       </div>
                     </div>
                   ))}
